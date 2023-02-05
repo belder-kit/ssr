@@ -6,7 +6,7 @@
     "dev": "remix dev",
     "start": "remix-serve build",
     "typecheck": "tsc -b",
-    "build:docker": "docker build . -t localhost:5000/mera/training",
+    "build:docker": "docker build . -t localhost:5000/belder-kit/ssr",
     "gql:generate": "yarn graphql-codegen"
   },
   "dependencies": {
@@ -24,7 +24,6 @@
     "isbot": "^3.6.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "remix-mount-routes": "^0.1.3",
     "tslib": "^2.4.1"
   },
   "devDependencies": {
