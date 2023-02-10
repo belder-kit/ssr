@@ -1,40 +1,69 @@
-import { Button } from "@chakra-ui/react";
-import styled from "@emotion/styled";
+import { Box, Button, Heading, Input } from "@chakra-ui/react";
+import { ActionArgs, json, redirect } from "@remix-run/node";
+import { Form, useLoaderData } from "@remix-run/react";
+import { db } from "~/utils/db.server";
 
-const MyDiv = styled("div")({ color: "red" });
+export const loader = async () => {
+  console.log("loader");
+  return json({
+    users: await db.user.findMany(),
+  });
+};
+
+export const action = async ({ request }: ActionArgs) => {
+  const form = await request.formData();
+  const userName = form.get("name");
+  const email = form.get("email");
+
+  if (
+    !userName ||
+    !email ||
+    typeof userName !== "string" ||
+    typeof email !== "string"
+  ) {
+    throw new Error(`Form not submitted correctly.`);
+  }
+
+  const user = await db.user.create({
+    data: {
+      email,
+      name: userName,
+    },
+  });
+  return json({
+    ok: 200,
+  });
+};
 
 export default function Index() {
+  const data = useLoaderData<typeof loader>();
+
   return (
-    <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.4" }}>
-      <h1>Welcome to Remix 2</h1>
-      <MyDiv>Test Red</MyDiv>
-      <div>Test black</div>
-      <Button>test</Button>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/blog"
-            rel="noreferrer"
-          >
-            15m Quickstart Blog Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            target="_blank"
-            href="https://remix.run/tutorials/jokes"
-            rel="noreferrer"
-          >
-            Deep Dive Jokes App Tutorial
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
-    </div>
+    <Box m="4">
+      <Heading>Users</Heading>
+      <Box width="300px">
+        <form method="post">
+          <div>
+            <label>
+              Name: <Input type="text" name="name" />
+            </label>
+          </div>
+          <div>
+            <label>
+              Email: <Input type="text" name="email" />
+            </label>
+          </div>
+          <div>
+            <Button type="submit" className="button">
+              Add
+            </Button>
+          </div>
+        </form>
+      </Box>
+
+      {data.users.map((user) => (
+        <Box key={user.id}>{user.name}</Box>
+      ))}
+    </Box>
   );
 }

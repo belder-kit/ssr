@@ -1,0 +1,58 @@
+version: "3.3"
+
+services:
+  traefik:
+    image: "traefik:v2.9"
+    container_name: "traefik"
+    command:
+      - "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--api.dashboard=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    labels:
+      - "traefik.http.routers.dashboard.service=api@internal"
+    ports:
+      - "80:80"
+      - "8080:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+          cpus: "0.5"
+        reservations:
+          memory: 128M
+  db:
+    container_name: postgres-database
+    image: postgres:15.0-alpine
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: pg
+      POSTGRES_PASSWORD: qwe
+      POSTGRES_DB: db
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+          cpus: "0.5"
+        reservations:
+          memory: 128M
+  ssr:
+    image: localhost:5000/app/ssr
+    container_name: ssr
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.ssr.rule=(Host(`ssr.localhost`)
+      - traefik.http.routers.ssr.entrypoints=web
+      - traefik.http.services.my-service.loadbalancer.server.port=3000
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: "0.5"
+        reservations:
+          memory: 128M

@@ -5,8 +5,6 @@ import { hydrateRoot } from "react-dom/client";
 import { ClientStyleContext } from "./utils/context";
 import createEmotionCache, { defaultCache } from "./utils/createEmotionCache";
 
-import { ChakraProvider } from "@chakra-ui/react";
-
 interface ClientCacheProviderProps {
   children: React.ReactNode;
 }

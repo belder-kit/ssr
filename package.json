@@ -2,12 +2,16 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "remix build",
-    "dev": "remix dev",
     "start": "remix-serve build",
+    "build": "remix build",
     "typecheck": "tsc -b",
+    "dev:remix": "remix dev",
+    "dev:db": "docker compose -f docker-compose.db.yml up -d",
     "build:docker": "docker build . -t localhost:5000/belder-kit/ssr",
-    "gql:generate": "yarn graphql-codegen"
+    "prisma:generate": "yarn pnpify prisma generate",
+    "prisma:push": "yarn pnpify prisma db push",
+    "prisma:studio": "yarn prisma studio",
+    "prisma:seed": "yarn prisma db seed"
   },
   "dependencies": {
     "@chakra-ui/react": "^2.4.8",
@@ -16,6 +20,7 @@
     "@emotion/react": "^11",
     "@emotion/server": "^11",
     "@emotion/styled": "^11",
+    "@prisma/client": "4.10.0",
     "@remix-run/node": "^1.9.0",
     "@remix-run/react": "^1.9.0",
     "@remix-run/serve": "^1.9.0",
@@ -31,11 +36,20 @@
     "@remix-run/eslint-config": "^1.9.0",
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
+    "@yarnpkg/pnpify": "^4.0.0-rc.39",
     "eslint": "^8.27.0",
+    "prisma": "4.10.0",
+    "ts-node": "^10.9.1",
     "typescript": "^4.8.4"
+  },
+  "prisma": {
+    "seed": "yarn ts-node prisma/seed.ts"
   },
   "engines": {
     "node": ">=14"
   },
-  "packageManager": "yarn@3.3.1"
+  "packageManager": "yarn@3.3.1",
+  "resolutions": {
+    ".prisma": "link:node-modules/.prisma"
+  }
 }
