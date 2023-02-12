@@ -19,11 +19,40 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
-  training:
-    image: localhost:5000/mera/training
-    container_name: training
+  ssr:
+    image: localhost:5000/belderkit/ssr
+    container_name: ssr
     labels:
       - traefik.enable=true
-      - traefik.http.routers.training.rule=(Host(`training.localhost`) && PathPrefix(`/training`))
-      - traefik.http.routers.training.entrypoints=web
-      - traefik.http.services.my-service.loadbalancer.server.port=3000
+      - traefik.http.routers.ssr.rule=(Host(`belderkit.localhost`))
+      - traefik.http.routers.ssr.entrypoints=web
+      - traefik.http.services.ssr.loadbalancer.server.port=3000
+
+  db:
+    container_name: postgres-database
+    image: postgres:15.0-alpine
+    environment:
+      # TODO: Change on env variables from github secret
+      POSTGRES_USER: pg
+      POSTGRES_PASSWORD: qwe
+      POSTGRES_DB: db
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+          cpus: "0.5"
+        reservations:
+          memory: 128M
+
+  pgadmin:
+    container_name: pg-admin
+    image: dpage/pgadmin4:6.20
+    environment:
+      # TODO: Change on env variables from github secret
+      PGADMIN_DEFAULT_EMAIL: pg@example.com
+      PGADMIN_DEFAULT_PASSWORD: qwe
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.db.rule=(Host(`belderkit.localhost`) && PathPrefix(`/db`))
+      - traefik.http.routers.db.entrypoints=web
+      - traefik.http.services.db.loadbalancer.server.port=80
