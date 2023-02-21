@@ -1,5 +1,4 @@
-import { Box, Button, Container, Heading, Input } from "@chakra-ui/react";
-import type { ActionArgs } from "@remix-run/node";
+import { Box, Container, Heading } from "@chakra-ui/react";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { Navbar } from "~/components/ladning/navbar/Navbar";
