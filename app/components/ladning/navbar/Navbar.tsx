@@ -34,6 +34,8 @@ export const Navbar = () => {
             }}
             fontWeight="semibold"
             fontSize="md"
+            as={RouterLink}
+            to="/"
           >
             Home
           </Link>
@@ -45,6 +47,8 @@ export const Navbar = () => {
             }}
             fontWeight="semibold"
             fontSize="md"
+            as={RouterLink}
+            to="/"
           >
             Pricing
           </Link>
@@ -56,6 +60,8 @@ export const Navbar = () => {
             }}
             fontWeight="semibold"
             fontSize="md"
+            as={RouterLink}
+            to="/"
           >
             Solution
           </Link>
@@ -67,6 +73,8 @@ export const Navbar = () => {
             }}
             fontWeight="semibold"
             fontSize="md"
+            as={RouterLink}
+            to="/"
           >
             FAQ
           </Link>
