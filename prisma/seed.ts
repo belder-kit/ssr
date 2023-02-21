@@ -23,6 +23,24 @@ async function main() {
     ],
     skipDuplicates: true,
   });
+  await prisma.emailToken.deleteMany();
+  await prisma.emailToken.createMany({
+    data: [
+      {
+        userId: "0",
+        token: "0",
+      },
+      {
+        userId: "1",
+        token: "1",
+      },
+      {
+        userId: "2",
+        token: "2",
+      },
+    ],
+    skipDuplicates: true,
+  });
 }
 
 main()

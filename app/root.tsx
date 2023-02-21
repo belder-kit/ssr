@@ -11,6 +11,7 @@ import {
 } from "@remix-run/react";
 import { useContext, useEffect } from "react";
 import { ClientStyleContext, ServerStyleContext } from "./utils/context";
+import { theme } from "./utils/theme";
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
@@ -68,7 +69,7 @@ const Document = withEmotionCache(
 export default function App() {
   return (
     <Document>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <Outlet />
       </ChakraProvider>
     </Document>

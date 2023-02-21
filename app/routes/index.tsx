@@ -1,6 +1,7 @@
 import { Box, Button, Heading, Input } from "@chakra-ui/react";
-import { ActionArgs, json, redirect } from "@remix-run/node";
-import { Form, useLoaderData } from "@remix-run/react";
+import type { ActionArgs } from "@remix-run/node";
+import { json } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 import { db } from "~/utils/db.server";
 
 export const loader = async () => {
@@ -62,7 +63,9 @@ export default function Index() {
       </Box>
 
       {data.users.map((user) => (
-        <Box key={user.id}>{user.name}</Box>
+        <Box key={user.id}>
+          {user.name}, {user.email}
+        </Box>
       ))}
     </Box>
   );
