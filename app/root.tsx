@@ -116,9 +116,7 @@ function getColorMode(cookies: string) {
 export default function App() {
   return (
     <Document>
-      <ChakraProvider theme={theme}>
-        <Outlet />
-      </ChakraProvider>
+      <Outlet />
     </Document>
   );
 }
