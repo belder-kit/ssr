@@ -14,16 +14,18 @@ export default function Index() {
   const data = useLoaderData<typeof loader>();
 
   return (
-    <Container maxW="container.lg">
+    <>
       <Navbar />
-      <Box m="4">
-        <Heading>Users</Heading>
-        {data.users.map((user) => (
-          <Box key={user.id}>
-            {user.name}, {user.email}
-          </Box>
-        ))}
-      </Box>
-    </Container>
+      <Container maxW="container.lg">
+        <Box m="4">
+          <Heading>Users</Heading>
+          {data.users.map((user) => (
+            <Box key={user.id}>
+              {user.name}, {user.email}
+            </Box>
+          ))}
+        </Box>
+      </Container>
+    </>
   );
 }
