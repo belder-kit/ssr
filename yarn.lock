@@ -3289,31 +3289,31 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@prisma/client@npm:4.10.0":
-  version: 4.10.0
-  resolution: "@prisma/client@npm:4.10.0"
+"@prisma/client@npm:4.11.0":
+  version: 4.11.0
+  resolution: "@prisma/client@npm:4.11.0"
   dependencies:
-    "@prisma/engines-version": 4.10.0-84.ca7fcef713137fa11029d519a9780db130cca91d
+    "@prisma/engines-version": 4.11.0-57.8fde8fef4033376662cad983758335009d522acb
   peerDependencies:
     prisma: "*"
   peerDependenciesMeta:
     prisma:
       optional: true
-  checksum: d090a46d912305787be24dc4b2582edd43f73ff42b2398aed07ecded119335881114edf43dc990cf0925c5e49e97f5fca190f29924e73688d46b9c6f70b83381
+  checksum: ca8d8f820caaf4a76b94674f88207d5bb14f57a9682d37d2f79c56378f259cd3b14b30a110ab59a97647fcf3c46f896e7a2d20ded2777e09b835d7accd70cf1d
   languageName: node
   linkType: hard
 
-"@prisma/engines-version@npm:4.10.0-84.ca7fcef713137fa11029d519a9780db130cca91d":
-  version: 4.10.0-84.ca7fcef713137fa11029d519a9780db130cca91d
-  resolution: "@prisma/engines-version@npm:4.10.0-84.ca7fcef713137fa11029d519a9780db130cca91d"
-  checksum: ff10d22bbfa926aa6f2d7b0a728b48b6683a2518250a7612ffa685a1ff76d6ad8987f2233a62461b5fe2cd176cd1da3c0022c9573b6afd20ecfcb706cfcaf76e
+"@prisma/engines-version@npm:4.11.0-57.8fde8fef4033376662cad983758335009d522acb":
+  version: 4.11.0-57.8fde8fef4033376662cad983758335009d522acb
+  resolution: "@prisma/engines-version@npm:4.11.0-57.8fde8fef4033376662cad983758335009d522acb"
+  checksum: f040b93d09b21feaef193080eed22142fa26b3cf86d089ebb4286f5f45ed17a98e030a8bb55c0bec2892e15880a697f6754c6966b7795cf7ba4553f59fb387e7
   languageName: node
   linkType: hard
 
-"@prisma/engines@npm:4.10.0":
-  version: 4.10.0
-  resolution: "@prisma/engines@npm:4.10.0"
-  checksum: 25769b2b74f886cc0eb8c7b64cbd4bbd041cb9998760870f7b8b7fee1db87d7322e936f6db207d4c754ec8cda43f506710cfd5846a55374497b1384d77090d41
+"@prisma/engines@npm:4.11.0":
+  version: 4.11.0
+  resolution: "@prisma/engines@npm:4.11.0"
+  checksum: 98030cead39e5009b7a91fd2463433ccdb16cbeb6c7345ed7950c25dbe0731a425fc888458a1423b594d659972e081ca3d63d301ef647f05a634209c75769db2
   languageName: node
   linkType: hard
 
@@ -10314,15 +10314,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prisma@npm:4.10.0":
-  version: 4.10.0
-  resolution: "prisma@npm:4.10.0"
+"prisma@npm:4.11.0":
+  version: 4.11.0
+  resolution: "prisma@npm:4.11.0"
   dependencies:
-    "@prisma/engines": 4.10.0
+    "@prisma/engines": 4.11.0
   bin:
     prisma: build/index.js
     prisma2: build/index.js
-  checksum: aa88faafa16692ba76cf5544ffb9f3e42b24a191bc87ba7ac7b440b843927224f02c5085d0620f17a506799eccb54f600c5ef05c23daca995ea81c15c4f86390
+  checksum: 760d80766ae16ad2d25cfc20d75433b020dff0937eab864b94b95beadd89e481508e4d3c6370a5df90749d5ac5c7af77c9c2f293b74bfdee0e548b04a905c2e7
   languageName: node
   linkType: hard
 
@@ -11057,7 +11057,7 @@ __metadata:
     "@emotion/react": ^11
     "@emotion/server": ^11
     "@emotion/styled": ^11
-    "@prisma/client": 4.10.0
+    "@prisma/client": 4.11.0
     "@remix-run/dev": ^1.9.0
     "@remix-run/eslint-config": ^1.9.0
     "@remix-run/node": ^1.9.0
@@ -11074,7 +11074,7 @@ __metadata:
     framer-motion: ^6
     invariant: ^2.2.4
     isbot: ^3.6.5
-    prisma: 4.10.0
+    prisma: 4.11.0
     react: ^18.2.0
     react-dom: ^18.2.0
     react-hook-form: ^7.43.1
