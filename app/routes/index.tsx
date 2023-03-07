@@ -1,6 +1,7 @@
 import { Box, Container, Heading } from "@chakra-ui/react";
 import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import { Hero } from "~/components/landing/hero/Hero";
 import { Navbar } from "~/components/landing/navbar/Navbar";
 import { db } from "~/utils/db.server";
 
@@ -16,6 +17,7 @@ export default function Index() {
   return (
     <>
       <Navbar />
+      <Hero />
       <Container maxW="container.lg">
         {/* <Box m="4">
           <Heading>Users</Heading>

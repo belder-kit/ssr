@@ -1,4 +1,8 @@
-import { theme as chakraTheme } from "@chakra-ui/react";
+import {
+  defineStyle,
+  defineStyleConfig,
+  theme as chakraTheme,
+} from "@chakra-ui/react";
 
 // theme.js
 export const theme = {
