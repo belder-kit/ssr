@@ -39,32 +39,33 @@ services:
           cpus: "0.5"
         reservations:
           memory: 128M
-  # ssr:
-  #   image: localhost:5000/app/ssr
-  #   container_name: ssr
-  #   labels:
-  #     - traefik.enable=true
-  #     - traefik.http.routers.ssr.rule=(Host(`belderkit.localhost`)
-  #     - traefik.http.routers.ssr.entrypoints=web
-  #     - traefik.http.services.ssr.loadbalancer.server.port=3000
-  #   deploy:
-  #     resources:
-  #       limits:
-  #         memory: 512M
-  #         cpus: "0.5"
-  #       reservations:
-  #         memory: 128M
-  pgadmin:
-    container_name: pg-admin
-    image: dpage/pgadmin4:6.20
-    environment:
-      PGADMIN_DEFAULT_EMAIL: pg@example.com
-      PGADMIN_DEFAULT_PASSWORD: qwe
+  ssr:
+    # image: localhost:5000/app/ssr
+    build: .
+    container_name: ssr
     labels:
       - traefik.enable=true
-      - traefik.http.routers.db.rule=(Host(`belderkit.localhost`) && PathPrefix(`/db`))
-      - traefik.http.middlewares.replacepath-db.replacepath.path=/
-      - traefik.http.routers.db.middlewares=pg-admin-header@docker
-      - traefik.http.routers.db.entrypoints=web
-      - traefik.http.services.db.loadbalancer.server.port=80
-      - traefik.http.middlewares.pg-admin-header.headers.customrequestheaders.X-Script-Name=/db
+      - traefik.http.routers.ssr.rule=(Host(`belderkit.localhost`)
+      - traefik.http.routers.ssr.entrypoints=web
+      - traefik.http.services.ssr.loadbalancer.server.port=3000
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+          cpus: "0.5"
+        reservations:
+          memory: 128M
+  # pgadmin:
+  #   container_name: pg-admin
+  #   image: dpage/pgadmin4:6.20
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: pg@example.com
+  #     PGADMIN_DEFAULT_PASSWORD: qwe
+  #   labels:
+  #     - traefik.enable=true
+  #     - traefik.http.routers.db.rule=(Host(`belderkit.localhost`) && PathPrefix(`/db`))
+  #     - traefik.http.middlewares.replacepath-db.replacepath.path=/
+  #     - traefik.http.routers.db.middlewares=pg-admin-header@docker
+  #     - traefik.http.routers.db.entrypoints=web
+  #     - traefik.http.services.db.loadbalancer.server.port=80
+  #     - traefik.http.middlewares.pg-admin-header.headers.customrequestheaders.X-Script-Name=/db

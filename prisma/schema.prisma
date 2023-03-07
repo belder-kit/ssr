@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
 }
 
 datasource db {
@@ -18,34 +19,34 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  EmailToken EmailToken[]
-  Roles      ACLRole[]
+  // EmailToken EmailToken[]
+  // Roles      ACLRole[]
 }
 
-model EmailToken {
-  id    String @id @default(cuid())
-  token String @unique
+// model EmailToken {
+//   id    String @id @default(cuid())
+//   token String @unique
 
-  createdAt DateTime @default(now())
-  active    Boolean  @default(true)
+//   createdAt DateTime @default(now())
+//   active    Boolean  @default(true)
 
-  user   User   @relation(fields: [userId], references: [id])
-  userId String
+//   user   User   @relation(fields: [userId], references: [id])
+//   userId String
 
-  @@index([token])
-}
+//   @@index([token])
+// }
 
-model ACLRole {
-  id   String @id @default(cuid())
-  name String
+// model ACLRole {
+//   id   String @id @default(cuid())
+//   name String
 
-  User      User[]
-  ACLAccess ACLAccess[]
-}
+//   User      User[]
+//   ACLAccess ACLAccess[]
+// }
 
-model ACLAccess {
-  id   String @id @default(cuid())
-  name String
+// model ACLAccess {
+//   id   String @id @default(cuid())
+//   name String
 
-  ACLRole ACLRole[]
-}
+//   ACLRole ACLRole[]
+// }

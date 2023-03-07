@@ -43,16 +43,3 @@ services:
           cpus: "0.5"
         reservations:
           memory: 128M
-
-  pgadmin:
-    container_name: pg-admin
-    image: dpage/pgadmin4:6.20
-    environment:
-      # TODO: Change on env variables from github secret
-      PGADMIN_DEFAULT_EMAIL: pg@example.com
-      PGADMIN_DEFAULT_PASSWORD: qwe
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.db.rule=(Host(`belderkit.localhost`) && PathPrefix(`/db`))
-      - traefik.http.routers.db.entrypoints=web
-      - traefik.http.services.db.loadbalancer.server.port=80

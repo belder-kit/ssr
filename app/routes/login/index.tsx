@@ -160,5 +160,6 @@ export const loader = async ({ request, params }: LoaderArgs) => {
 };
 
 export default function Index() {
-  return <LoginPage />;
+  return null;
+  // return <LoginPage />;
 }
