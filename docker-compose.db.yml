@@ -19,7 +19,7 @@ services:
           memory: 128M
   pgadmin:
     container_name: pg-admin
-    image: dpage/pgadmin4:6.20
+    image: dpage/pgadmin4:6.21
     ports:
       - 5050:80
     environment:
